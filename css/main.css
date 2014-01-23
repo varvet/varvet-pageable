@@ -1,0 +1,28 @@
+html,body {
+  margin:0;
+  padding:0;
+}
+html {
+  font-family:"Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-weight:100;
+}
+body {
+  padding:20px;
+  background:#aaa;
+}
+#listing {
+  position:absolute;
+  top:40px;
+  left:40px;
+  padding-left:17px;
+}
+li {
+  list-style:none;
+  height:36px;
+  position:relative;
+  z-index:2;
+}
+.active {
+  list-style:outside;
+  font-weight:400;
+}

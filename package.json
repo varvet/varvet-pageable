@@ -1,0 +1,12 @@
+{
+  "name": "pageable",
+  "description": "A JS wheel listener that changes pages for you",
+  "author": "Johan Halse (http://varvet.se)",
+  "dependencies": {
+    "grunt": "0.x.x",
+    "grunt-version": "0.3.x",
+    "grunt-contrib-clean": "0.5.x",
+    "grunt-contrib-uglify": "0.2.x"
+  },
+  "engine": "node >= 0.10"
+}

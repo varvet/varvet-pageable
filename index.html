@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pageable, baby</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+
+    <div class="wrapper">
+      <ul id="listing">
+        <li class="page active" id="page-0">Lorem<div id="point"></div></li>
+        <li class="page" id="page-1">Ipsum</li>
+        <li class="page" id="page-2">Dolor</li>
+        <li class="page" id="page-3">Sit</li>
+        <li class="page" id="page-4">Amet</li>
+        <li class="page" id="page-5">Consectetuer</li>
+        <li class="page" id="page-6">Adipiscing</li>
+        <li class="page" id="page-7">Elit</li>
+      </ul>
+      <div class="display">
+        <span id="percent">0</span>% scrolled
+      </div>
+    </div>
+
+    <script src="dist/pageable-0.1.js"></script>
+    <script>
+      var showPercent = function(percent) {
+        document.getElementById('percent').innerHTML = Math.round(percent * 100);
+      };
+
+      var tmp = new Pageable({
+        pages: 8,
+        pageHeight: 600,
+        momentum: true,
+        easeBack: true,
+        
+        onScroll: function(percent, page) {
+          showPercent( percent );
+        },
+        onScrollStop: function(percent, page) {
+          showPercent( 0 );
+        },
+        onPageChange: function(from, to) {
+          showPercent( 0 );
+          document.getElementById('page-'+from).className = '';
+          document.getElementById('page-'+to).className = 'active';
+        }
+      });
+    </script>
+  </body>
+</html>
