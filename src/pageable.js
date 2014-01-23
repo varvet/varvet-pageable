@@ -176,12 +176,12 @@ Pageable.prototype = {
 
     // User has scrolled past a page, forwards
     if(this.percentage >= 1 && this.page < (this.settings.pages-1)) {
-      this.gotoPage(page + 1);
+      this.gotoPage(this.page + 1);
     }
 
     // User has scrolled past a page, backwards
     if(this.percentage <= -1 && this.page > 0) {
-      this.gotoPage(page - 1);
+      this.gotoPage(this.page - 1);
     }
 
     this.settings.onScroll.apply(this, [ this.percentage, this.page ]);
