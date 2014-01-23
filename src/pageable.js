@@ -72,6 +72,23 @@ Pageable.prototype = {
   },
 
   /**
+   * Move Pageable to a page, run callbacks, set correct values
+   * @param  {number} page page to go to
+   * @return {null}
+   */
+  gotoPage: function(page) {
+    // We do it like this because user might want to manipulate this.page
+    // for some reason and it should be correctly set. Come to think of
+    // it, maybe they don't need that? Ah well
+    var prevPage = this.page;
+    this.page = page;
+    this.settings.onPageChange.apply(this, [prevPage, this.page]);
+    this.percentage = 0;
+    this.delta = 0;
+    this.stoppedAtPage = true;
+  },
+
+  /**
    * Does what you probably expect it to do
    * @return {null}
    */
@@ -159,20 +176,12 @@ Pageable.prototype = {
 
     // User has scrolled past a page, forwards
     if(this.percentage >= 1 && this.page < (this.settings.pages-1)) {
-      this.page++;
-      this.settings.onPageChange.apply(this, [this.page-1, this.page]);
-      this.percentage = 0;
-      this.delta = 0;
-      this.stoppedAtPage = true;
+      this.gotoPage(page + 1);
     }
 
     // User has scrolled past a page, backwards
     if(this.percentage <= -1 && this.page > 0) {
-      this.page--;
-      this.settings.onPageChange.apply(this, [this.page+1, this.page]);
-      this.percentage = 0;
-      this.delta = 0;
-      this.stoppedAtPage = true;
+      this.gotoPage(page - 1);
     }
 
     this.settings.onScroll.apply(this, [ this.percentage, this.page ]);

@@ -18,12 +18,12 @@ module.exports = function(grunt) {
       }
     }
   });
- 
+
   // load the tasks
   grunt.loadNpmTasks('grunt-version');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-uglify');
- 
+
   // define the tasks
   grunt.registerTask(
     'build', 
