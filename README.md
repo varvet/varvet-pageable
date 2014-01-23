@@ -7,5 +7,4 @@ It's a small, dependency-free plugin for listening to mouse wheel and touch even
 We're [Varvet](http://www.varvet.se) and we're the friendliest bunch of techs in Gothenburg, Sweden.
 
 ## License
-==
 http://johanhalse.mit-license.org
